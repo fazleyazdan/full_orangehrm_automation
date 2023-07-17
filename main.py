@@ -21,9 +21,9 @@ driver.find_element(By.CLASS_NAME, "orangehrm-login-button").click()
 exp_title = driver.title
 act_title = 'OrangeHRM'
 if exp_title == act_title:
-    print("test case passed")
+    print("test case passed!")
 else:
-    print("test case failed")
+    print("test case failed!")
 # my_element = driver.find_element(By.CLASS_NAME, "orangehrm-login-button")
 
 
