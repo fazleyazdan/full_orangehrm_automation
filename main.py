@@ -1,6 +1,4 @@
-from Tools.scripts.serve import app
 from selenium import webdriver
-from selenium.webdriver import chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
@@ -31,7 +29,10 @@ driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/
 
 # find element using LinkText
 driver.implicitly_wait(2)
+
 driver.find_element(By.LINK_TEXT, "OrangeHRM, Inc").click()
+
+# driver.find_element(By.PARTIAL_LINK_TEXT, "OrangeHRM").click()
 
 # after login matching the title of the website
 exp_title = driver.title
@@ -40,6 +41,6 @@ if exp_title == act_title:
     print("test case passed!")
 else:
     print("test case failed!")
-
+driver.close()
 # my_element = driver.find_element(By.CLASS_NAME, "orangehrm-login-button")
 
