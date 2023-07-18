@@ -9,21 +9,37 @@ import os
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 
+# Environment Setup
 
 os.environ['PATH'] += r"C:\Drivers\chromedriver_win32"
 driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+
+# visiting website
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+
+# used implicit wait so that the website can properly load and then the driver perform other actions
 driver.implicitly_wait(7)
+
+# finding the username and password field using XPATH
 driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input').send_keys('Admin')
 driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input').send_keys('admin123')
+
+# find element using class name
 driver.find_element(By.CLASS_NAME, "orangehrm-login-button").click()
 
+driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[10]/a/span').click()
+
+# find element using LinkText
+driver.implicitly_wait(2)
+driver.find_element(By.LINK_TEXT, "OrangeHRM, Inc").click()
+
+# after login matching the title of the website
 exp_title = driver.title
 act_title = 'OrangeHRM'
 if exp_title == act_title:
     print("test case passed!")
 else:
     print("test case failed!")
-# my_element = driver.find_element(By.CLASS_NAME, "orangehrm-login-button")
 
+# my_element = driver.find_element(By.CLASS_NAME, "orangehrm-login-button")
 
