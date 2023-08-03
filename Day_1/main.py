@@ -10,7 +10,11 @@ options.add_experimental_option("detach", True)
 # Environment Setup
 
 os.environ['PATH'] += r"C:\Drivers\chromedriver_win32"
-driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+
+# Service is the location of chrome driver
+driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager(version="114.0.5735.90").install()))
+# driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+
 
 # visiting website
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
@@ -18,13 +22,18 @@ driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 # used implicit wait so that the website can properly load and then the driver perform other actions
 driver.implicitly_wait(7)
 
-# finding the username and password field using XPATH
-driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input').send_keys('Admin')
-driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input').send_keys('admin123')
+# finding the username and password field using XPATH (this is Absolute/full XPATH)
+# Ab.XPATH uses nodes and tags only
+# (Ab.XPATH start from root node ie /Html) ((starts with /)
+
+driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input').send_keys('Admin')
+driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input').send_keys('admin123')
 
 # find element using class name
 driver.find_element(By.CLASS_NAME, "orangehrm-login-button").click()
 
+# this is Relative/Partial XPATH (starts with //)
+# Rel.XPATH must contain an Attribute
 driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[10]/a/span').click()
 
 # find element using LinkText
