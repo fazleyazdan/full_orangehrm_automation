@@ -6,12 +6,10 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 
-options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
-
 # Environment Setup
-os.environ['PATH'] += r"C:\Drivers\chromedriver_win32"
-driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager(version="114.0.5735.90").install()))
+
+ser_obj = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(service=ser_obj)
 
 # visiting website
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")

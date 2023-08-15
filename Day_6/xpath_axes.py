@@ -8,8 +8,9 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 
 # Environment Setup
-os.environ['PATH'] += r"C:\Drivers\chromedriver_win32"
-driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager(version="114.0.5735.90").install()))
+
+ser_obj = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(service=ser_obj)
 
 # visiting website
 driver.maximize_window()
@@ -30,7 +31,7 @@ driver.implicitly_wait(4)
 # for better understanding watch SDET selenium with python lecture 4
 
 # extracting the text of 'a' tag using XPATH axes 'self'
-# I have made this element a self element. now i can navigate from this element to  other element
+# I have made this element a self element. now I can navigate from this element to  other element
 
 # Due to the constant changes in web the element text can change and the compiler can throw an error
 # therefore you are advised to check the element because you may be seeing this code years after its creation

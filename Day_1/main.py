@@ -4,23 +4,19 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 
-options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
+# Service is the location of chrome driver
+
+ser_obj = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(service=ser_obj)
 
 # Environment Setup
-
-os.environ['PATH'] += r"C:\Drivers\chromedriver_win32"
-
-# Service is the location of chrome driver
-driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager(version="114.0.5735.90").install()))
-# driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
-
+# os.environ['PATH'] += r"C:\Drivers\chromedriver_win32"
 
 # visiting website
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
 # used implicit wait so that the website can properly load and then the driver perform other actions
-driver.implicitly_wait(7)
+driver.implicitly_wait(5)
 
 # finding the username and password field using XPATH (this is Absolute/full XPATH)
 # Ab.XPATH uses nodes and tags only
