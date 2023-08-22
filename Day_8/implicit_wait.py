@@ -15,7 +15,7 @@ ser_obj = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
 driver = webdriver.Chrome(options=options, service=ser_obj)
 
 # pros:
-# now implicit wait have to be used once in a script, and it is available for the works until the driver is alive
+# now implicit wait have to be used once in a script, and it is available for the entire code until the driver is alive
 # meaning it works for all the statement which comes after it.
 # where ever the synchronization problem may occur it will handle it
 # driver is only killed when you 'close' or 'quit' the driver. ie 'driver.quit'

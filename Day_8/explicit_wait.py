@@ -19,7 +19,7 @@ driver = webdriver.Chrome(options=options, service=ser_obj)
 
 # here I have used webDriverWait class and made an object of that class ie 'myWait'
 # we wil use the object further
-# myWait = WebDriverWait(driver, 10)  # basic explicit wait declaration
+# myWait = WebDriverWait(driver, 10)  # basic explicit wait declaration syntax
 
 # advanced declaration syntax
 myWait = WebDriverWait(driver, 10, poll_frequency=2, ignored_exceptions=[NoSuchElementException,
@@ -29,7 +29,7 @@ myWait = WebDriverWait(driver, 10, poll_frequency=2, ignored_exceptions=[NoSuchE
 # as the  maximum time out is 10 secs. we use poll frequency to look for the element  after every 2 secs
 # if the element is located in the first cycle of p.frequency then the script will move on to next statements
 # if element is not found.then poll.frequency will look for the element 5 times in those 10 sec until it is located
-# poll frequency should always be less than maximum time out
+# poll frequency should always be less than maximum time out ie 'p.frequency < 10'
 
 driver.get('https://www.google.com/')
 search_box = driver.find_element(By.NAME, 'q')
@@ -48,7 +48,7 @@ search_box.submit()
 # will throw an exception , or we can handle the exception automatically by specifying them in declaration
 # 2: explicit wait is not a single statement you have to insert it multiple times
 
-# pros :
+# pros:
 # more effective because there is exception handling mechanism as well
 
 searchLink = myWait.until(EC.presence_of_element_located((By.XPATH, "//h3[text()='Selenium']")))

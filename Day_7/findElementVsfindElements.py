@@ -54,4 +54,4 @@ elements = driver.find_elements(By.LINK_TEXT, "Log")
 print(len(elements))  # find_elements will not throw exception because there is no element in the list collection
 
 elements = driver.find_elements(By.LINK_TEXT, "Log")
-print(len(elements[0].text))  # will give an error list index out of range
+print(elements[0].text)  # will give an error list index out of range
