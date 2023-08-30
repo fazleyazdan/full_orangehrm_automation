@@ -4,7 +4,6 @@
 # driver.current_window_handle : return windowID of single browser window
 # driver.window_handles : return window ID's of multiple browsers windows
 import time
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
