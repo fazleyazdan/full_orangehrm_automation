@@ -25,6 +25,7 @@ for r in range(2, rows_count+1):
 
 print("books having price equal to 300: ", count)
 print("books having price greater than 300: ", rows_count-count)
+print("total no of books: ", rows_count)
 
 time.sleep(3)
 driver.close()
